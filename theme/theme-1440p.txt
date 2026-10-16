@@ -1,0 +1,77 @@
+# Re:Zero Lavender — 1440p. Percentages keep the reference composition.
+title-text: ""
+desktop-image: "background.png"
+desktop-image-scale-method: "stretch"
+desktop-color: "#f3f3f6"
+message-font: "DejaVu Serif Regular 25"
+message-color: "#514177"
+message-bg-color: "#f3f3f6"
+terminal-font: "DejaVu Serif Regular 16"
+
++ label {
+    left = 25%
+    top = 24%
+    width = 25%
+    height = 45
+    text = "—  GNU GRUB  —"
+    font = "DejaVu Serif Regular 33"
+    color = "#78679c"
+    align = "center"
+}
+
++ boot_menu {
+    left = 20%+10
+    top = 31%
+    width = 44%
+    height = 32%
+    item_font = "DejaVu Serif Regular 32"
+    selected_item_font = "DejaVu Serif Regular 32"
+    item_color = "#655382"
+    selected_item_color = "#ffffff"
+    item_height = 50
+    item_spacing = 10
+    item_padding = 0
+    icon_width = 0
+    icon_height = 0
+    item_icon_space = 0
+    item_pixmap_style = "idle_*.png"
+    selected_item_pixmap_style = "select_*.png"
+    scrollbar = true
+    scrollbar_width = 4
+    scrollbar_frame = "scroll_*.png"
+    scrollbar_thumb = "thumb_*.png"
+}
+
++ label {
+    left = 20%+10
+    top = 73%
+    width = 44%
+    height = 35
+    text = "Use ↑ and ↓ keys to select an entry."
+    font = "DejaVu Serif Regular 25"
+    color = "#78679c"
+    align = "center"
+}
+
++ label {
+    left = 20%+10
+    top = 76%
+    width = 44%
+    height = 35
+    text = "Enter to boot · e to edit · c for command line"
+    font = "DejaVu Serif Regular 25"
+    color = "#78679c"
+    align = "center"
+}
+
++ label {
+    id = "__timeout__"
+    left = 20%+10
+    top = 80%
+    width = 44%
+    height = 35
+    text = "Booting in %d seconds"
+    font = "DejaVu Serif Regular 25"
+    color = "#78679c"
+    align = "center"
+}

@@ -1,0 +1,45 @@
+name: Test theme and installer
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  installer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -v
+      - run: bash -n install.sh uninstall.sh
+  grub-vm:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {firmware: uefi, resolution: 1920x1080, profile: 1080p, mode: keyboard}
+          - {firmware: bios, resolution: 1920x1080, profile: 1080p, mode: keyboard}
+          - {firmware: uefi, resolution: 1024x768, profile: compact, mode: keyboard}
+          - {firmware: uefi, resolution: 2560x1440, profile: 1440p, mode: keyboard}
+          - {firmware: uefi, resolution: 1920x1080, profile: 1080p, mode: autoboot}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y grub-common grub-pc-bin grub-efi-amd64-bin qemu-system-x86 ovmf xorriso mtools python3-pil
+      - name: Boot and exercise actual GRUB
+        env:
+          FIRMWARE: ${{ matrix.firmware }}
+          RESOLUTION: ${{ matrix.resolution }}
+          PROFILE: ${{ matrix.profile }}
+          MODE: ${{ matrix.mode }}
+        run: |
+          extra=()
+          if [[ "$MODE" == autoboot ]]; then extra+=(--autoboot); fi
+          python3 scripts/test_vm.py --firmware "$FIRMWARE" --resolution "$RESOLUTION" --profile "$PROFILE" "${extra[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: grub-${{ matrix.firmware }}-${{ matrix.resolution }}-${{ matrix.mode }}
+          path: |
+            build/**/*.png
+            build/**/*.log
+            build/**/result.json

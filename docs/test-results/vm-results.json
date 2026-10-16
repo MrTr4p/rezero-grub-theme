@@ -1,0 +1,37 @@
+[
+  {
+    "firmware": "bios",
+    "resolution": "1920x1080",
+    "profile": "1080p",
+    "mode": "selection, scrolling, submenu, console, editor, entry execution",
+    "status": "passed"
+  },
+  {
+    "firmware": "uefi",
+    "resolution": "1024x768",
+    "profile": "compact",
+    "mode": "selection, scrolling, submenu, console, editor, entry execution",
+    "status": "passed"
+  },
+  {
+    "firmware": "uefi",
+    "resolution": "1920x1080",
+    "profile": "1080p",
+    "mode": "automatic entry",
+    "status": "passed"
+  },
+  {
+    "firmware": "uefi",
+    "resolution": "1920x1080",
+    "profile": "1080p",
+    "mode": "selection, scrolling, submenu, console, editor, entry execution",
+    "status": "passed"
+  },
+  {
+    "firmware": "uefi",
+    "resolution": "2560x1440",
+    "profile": "1440p",
+    "mode": "selection, scrolling, submenu, console, editor, entry execution",
+    "status": "passed"
+  }
+]

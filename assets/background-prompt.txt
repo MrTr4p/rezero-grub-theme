@@ -1,0 +1,6 @@
+Use case: precise-object-edit.
+Asset type: background artwork for a real GNU GRUB boot menu.
+Input image: the attached 1600x900 Re:Zero purple boot menu screenshot is the edit target.
+Primary request: produce the SAME background art with ONLY the UI boot-menu overlay removed. Preserve the logo at upper left, the Japanese text at upper right, the silhouetted anime girl at lower left, the pale lavender watercolor leaves, butterflies, shattered violet glass and every thin decorative border, divider and diamond ornament in exactly the same composition.
+Remove these elements completely: "GNU GRUB version 2.12" at x400..800 y200..240; the purple horizontal selected-row bar and triangle at x327..1034 y282..314; all four boot option text rows at x360..1000 y285..420; the English keyboard-help text at x340..1015 y654..730. Reconstruct the smooth pale near-white lavender background behind only those overlay regions. Keep the slim decorative divider at y620 and lower divider at y812.
+No new text. Do not remove or redraw the Re:Zero logo or vertical Japanese lettering. Do not alter character, butterflies, colors, frame or image composition. Flat orthographic image, no monitor, no UI, no perspective. Output landscape 16:9 at 1920x1080 if possible.

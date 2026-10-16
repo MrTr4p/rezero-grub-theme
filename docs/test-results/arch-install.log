@@ -1,0 +1,21 @@
+Install complete. Backup: /var/lib/rezero-grub-theme/backup-20261016T154354-584080Z
+GRUB configuration validated and updated. Reboot when ready.
+Generating grub configuration file ...
+Found theme: /boot/grub/themes/rezero-lavender/theme.txt
+Found linux image: /vmlinuz-linux
+Found initrd image: //initramfs-linux.img
+Found linux image: /boot/vmlinuz-linux
+Found initrd image: /boot/initramfs-linux.img
+done
+Error: Conflicting settings in /etc/default/grub.d/90-conflict.cfg. Remove those overrides or follow the manual installation steps.
+Generating grub configuration file ...
+Found theme: /boot/grub/themes/rezero-lavender/theme.txt
+Error: Command '['/usr/bin/grub-mkconfig', '-o', '/boot/grub/grub.cfg.rezero-new']' returned non-zero exit status 42.
+Uninstall complete. Backup: /var/lib/rezero-grub-theme/backup-20261016T154355-984215Z
+GRUB configuration validated and updated. Reboot when ready.
+Generating grub configuration file ...
+Found linux image: /vmlinuz-linux
+Found initrd image: //initramfs-linux.img
+Found linux image: /boot/vmlinuz-linux
+Found initrd image: /boot/initramfs-linux.img
+done
