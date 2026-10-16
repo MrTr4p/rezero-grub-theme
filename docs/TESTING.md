@@ -68,7 +68,10 @@ It requires the standard Arch boot files `/boot/vmlinuz-linux` and
 
 The GitHub Actions [workflow](../.github/workflows/test.yml) repeats the unit
 tests and five VM configurations on Ubuntu, with screenshots/logs uploaded as
-workflow artifacts. The local tests used KVM; CI uses software emulation.
+workflow artifacts. The full local matrix used KVM; the 1080p UEFI keyboard test
+also passed with software emulation and a ROM assembled from separate OVMF CODE
+and VARS files. CI uses software emulation. The launcher accepts both split and
+complete firmware packages without changing the installed firmware files.
 
 ## Scope
 

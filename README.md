@@ -1,5 +1,7 @@
 # Re:Zero Lavender — GRUB theme
 
+[![Tests](https://github.com/MrTr4p/rezero-grub-theme/actions/workflows/test.yml/badge.svg)](https://github.com/MrTr4p/rezero-grub-theme/actions/workflows/test.yml)
+
 A real GRUB 2 boot menu based on the supplied Re:Zero reference: pale lavender
 artwork, butterflies, fractured glass, serif lettering and a purple selection bar
 with a moving white arrow.

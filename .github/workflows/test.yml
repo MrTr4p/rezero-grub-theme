@@ -2,6 +2,7 @@ name: Test theme and installer
 on:
   push:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -40,6 +41,6 @@ jobs:
         with:
           name: grub-${{ matrix.firmware }}-${{ matrix.resolution }}-${{ matrix.mode }}
           path: |
-            build/**/*.png
-            build/**/*.log
-            build/**/result.json
+            build/*/*/*.png
+            build/*/*/*.log
+            build/*/*/result.json

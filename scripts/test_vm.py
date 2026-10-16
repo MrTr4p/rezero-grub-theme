@@ -81,20 +81,32 @@ menuentry 'UEFI Firmware Settings' {{ echo REZERO_FIRMWARE_ENTRY_OK; sleep 2; }}
                         break
             if not firmware:
                 raise RuntimeError("OVMF not found; pass --ovmf /path/to/firmware.fd")
+            # Distribution CODE files omit the variable-store region. Assemble
+            # the standard complete ROM for this disposable, stateless VM.
+            if "CODE" in firmware.name:
+                variables = firmware.with_name(firmware.name.replace("CODE", "VARS"))
+                if not variables.is_file():
+                    raise RuntimeError(f"OVMF variable store not found: {variables}")
+                complete_rom = work / "OVMF.fd"
+                complete_rom.write_bytes(variables.read_bytes() + firmware.read_bytes())
+                firmware = complete_rom
             command.extend(["-bios", str(firmware)])
         with (work / "qemu.log").open("w") as log:
             vm = subprocess.Popen(command, env=env, stdout=subprocess.DEVNULL, stderr=log)
             try:
                 deadline = time.monotonic() + 45
-                while not qmp_path.exists():
-                    if vm.poll() is not None:
-                        raise RuntimeError((work / "qemu.log").read_text())
-                    if time.monotonic() > deadline:
-                        raise RuntimeError("QEMU did not open its control socket")
-                    time.sleep(.1)
                 with socket.socket(socket.AF_UNIX) as sock:
                     sock.settimeout(15)
-                    sock.connect(str(qmp_path))
+                    while True:
+                        if vm.poll() is not None:
+                            raise RuntimeError((work / "qemu.log").read_text())
+                        try:
+                            sock.connect(str(qmp_path))
+                            break
+                        except (FileNotFoundError, ConnectionRefusedError):
+                            if time.monotonic() > deadline:
+                                raise RuntimeError("QEMU did not open its control socket")
+                            time.sleep(.1)
                     stream = sock.makefile("rwb", buffering=0)
                     stream.readline()
                     def qmp(name, arguments=None):
